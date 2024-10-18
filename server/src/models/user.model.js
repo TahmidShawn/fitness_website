@@ -26,6 +26,22 @@ const userSchema = new mongoose.Schema(
             enum: ["user", "teacher", "admin"],
             default: "user",
         },
+        teacherId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Teacher",
+        },
+        purchasePackage: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Package",
+            },
+        ],
+        purchaseClass: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Class",
+            },
+        ],
 
         resetPasswordToken: String,
         resetPasswordExpire: Date,
