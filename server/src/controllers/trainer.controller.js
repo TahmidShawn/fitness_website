@@ -53,7 +53,7 @@ export const submitTrainerApplication = asyncHandler(async (req, res, next) => {
         facebookUrl,
     });
 
-    // Update the user's status to pending
+    // Update the user status to pending
     user.status = "pending";
     user.trainerId = trainer.id;
     await user.save();
