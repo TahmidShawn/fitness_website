@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const teacherSchema = new mongoose.Schema(
+const trainerSchema = new mongoose.Schema(
     {
         user: {
             type: mongoose.Schema.Types.ObjectId,
@@ -52,6 +52,6 @@ const teacherSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const Teacher =
-    mongoose.models.Teacher || mongoose.model("Teacher", teacherSchema);
-export default Teacher;
+const Trainer =
+    mongoose.models.Trainer || mongoose.model("Trainer", trainerSchema);
+export default Trainer;

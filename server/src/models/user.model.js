@@ -26,9 +26,9 @@ const userSchema = new mongoose.Schema(
             enum: ["user", "teacher", "admin"],
             default: "user",
         },
-        teacherId: {
+        trainerId: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Teacher",
+            ref: "Trainer",
         },
         purchasePackage: [
             {
