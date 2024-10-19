@@ -16,6 +16,7 @@ export const approveTrainerApplication = asyncHandler(
         // Update user status to approved
         const user = await User.findById(trainer.user);
         user.status = "approved";
+        user.role = "trainer";
         await user.save();
 
         res.status(200).json({

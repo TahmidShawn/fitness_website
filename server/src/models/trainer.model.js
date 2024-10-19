@@ -10,7 +10,7 @@ const trainerSchema = new mongoose.Schema(
         shortBio: {
             type: String,
             required: [true, "Please enter your bio"],
-            maxLength: [50, "Bio cannot exceed 50 characters"],
+            maxLength: [100, "Bio cannot exceed 100 characters"],
             minLength: [12, "Bio should have more than 12 characters"],
         },
         experience: {
@@ -18,20 +18,15 @@ const trainerSchema = new mongoose.Schema(
             required: [true, "Please enter your experience"],
         },
         skills: {
-            type: [
-                {
-                    type: String,
-                    required: [true, "Please enter at least one skill"],
-                },
-            ],
+            type: [String],
+            required: [true, "Please enter at least one skill"],
             validate: {
                 validator: function (skillsArray) {
                     return skillsArray.length > 0 && skillsArray.length <= 4;
                 },
-                message: "You must have between 1 and  skills",
+                message: "You must have between 1 and 4 skills",
             },
         },
-
         image: {
             type: String,
             required: [true, "Please upload your image"],
