@@ -42,6 +42,11 @@ const userSchema = new mongoose.Schema(
                 ref: "Class",
             },
         ],
+        status: {
+            type: String,
+            enum: ["not_applied", "pending", "approved", "rejected"],
+            default: "not_applied",
+        },
 
         resetPasswordToken: String,
         resetPasswordExpire: Date,
@@ -54,7 +59,6 @@ userSchema.set("toJSON", {
     transform: (doc, ret, options) => {
         if (ret) {
             delete ret.password;
-            delete ret.role;
         }
         return ret;
     },
