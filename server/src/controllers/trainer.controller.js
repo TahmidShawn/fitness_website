@@ -27,13 +27,14 @@ export const submitTrainerApplication = asyncHandler(async (req, res, next) => {
         throw new ErrorHandler("Please enter all required information", 400);
     }
 
-    // check user
+    // Find the user
     let user = await User.findById(req.user.id);
 
     if (!user) {
         throw new ErrorHandler("User not found", 404);
     }
 
+    // Check if user already has a trainer application
     if (user.status === "pending" || user.status === "approved") {
         throw new ErrorHandler(
             "You have already applied or have been approved as a trainer.",
@@ -41,17 +42,35 @@ export const submitTrainerApplication = asyncHandler(async (req, res, next) => {
         );
     }
 
-    // Create a new Trainer
-    const trainer = await Trainer.create({
-        user: user.id,
-        shortBio,
-        experience,
-        skills,
-        image,
-        mobileNo,
-        dateOfBirth,
-        facebookUrl,
-    });
+    // If the user was rejected, update the existing trainer application
+    let trainer;
+    if (user.status === "rejected" && user.trainerId) {
+        trainer = await Trainer.findByIdAndUpdate(
+            user.trainerId,
+            {
+                shortBio,
+                experience,
+                skills,
+                image,
+                mobileNo,
+                dateOfBirth,
+                facebookUrl,
+            },
+            { new: true } // return the updated trainer
+        );
+    } else {
+        // Create a new Trainer
+        trainer = await Trainer.create({
+            user: user.id,
+            shortBio,
+            experience,
+            skills,
+            image,
+            mobileNo,
+            dateOfBirth,
+            facebookUrl,
+        });
+    }
 
     // Update the user status to pending
     user.status = "pending";
