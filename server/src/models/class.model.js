@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import ErrorHandler from "../utils/errorHandler";
+import commentSchema from "./comment.model";
 
 const classSchema = new mongoose.Schema(
     {
@@ -19,7 +19,7 @@ const classSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please add description"],
             maxLength: [200, "Description cannot exceed 200 characters"],
-            minLength: [20, "Bio should have more than 20 characters"],
+            minLength: [20, "Description should have more than 20 characters"],
         },
         images: {
             type: [String],
@@ -34,23 +34,43 @@ const classSchema = new mongoose.Schema(
         category: {
             type: String,
             required: [true, "Please select class category"],
+            enum: {
+                values: [
+                    "Pilates",
+                    "Yoga",
+                    "Indoor Training",
+                    "Dance",
+                    "Kickboxing",
+                    "Circuit Training",
+                    "Strength Training",
+                    "Open Gym",
+                    "Cardio",
+                ],
+                message: "Please select a valid category",
+            },
         },
         price: {
-            type: String,
+            type: Number,
             required: [true, "Please enter the class fee"],
         },
+        discountPercentage: {
+            type: Number,
+            required: [true, "Please enter the discount percentage"],
+            min: [0, "Discount must be at least 0%"],
+            max: [100, "Discount cannot exceed 100%"],
+        },
         duration: {
-            type: Date,
+            type: Number,
             required: [true, "Please provide class duration"],
         },
-        Date: {
+        classDates: {
             type: [String],
             required: [true, "Please select class date"],
             validate: {
                 validator: function (datesArray) {
                     return datesArray.length > 2 && datesArray.length <= 5;
                 },
-                message: "You must take 3-5 class a week",
+                message: "You must take 3-5 classes a week",
             },
         },
         maxStudents: {
@@ -72,20 +92,13 @@ const classSchema = new mongoose.Schema(
         averageRating: {
             type: Number,
             default: 0,
+            min: [0, "Rating must be at least 0"],
+            max: [5, "Rating must not exceed 5"],
         },
+        comments: [commentSchema],
     },
     { timestamps: true }
 );
-
-// classSchema.pre("save", function (next) {
-//     if (this.students.length > this.maxStudents) {
-//         throw new ErrorHandler(
-//             `Cannot enroll more than ${this.maxStudents} students in this class`,
-//             403
-//         );
-//     }
-//     next();
-// });
 
 const Class = mongoose.models.Class || mongoose.model("Class", classSchema);
 export default Class;

@@ -42,7 +42,7 @@ export const submitTrainerApplication = asyncHandler(async (req, res, next) => {
         );
     }
 
-    // If the user was rejected, update the existing trainer application
+    // If the user was rejected update the existing trainer application
     let trainer;
     if (user.status === "rejected" && user.trainerId) {
         trainer = await Trainer.findByIdAndUpdate(
@@ -56,7 +56,7 @@ export const submitTrainerApplication = asyncHandler(async (req, res, next) => {
                 dateOfBirth,
                 facebookUrl,
             },
-            { new: true } // return the updated trainer
+            { new: true }
         );
     } else {
         // Create a new Trainer
