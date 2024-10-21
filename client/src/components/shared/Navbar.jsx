@@ -19,6 +19,9 @@ const Navbar = () => {
             <li>
                 <NavLink to="/">Trainers</NavLink>
             </li>
+            <li>
+                <NavLink to="/">About</NavLink>
+            </li>
         </>
     );
     const dashboardBtn = (
@@ -33,46 +36,50 @@ const Navbar = () => {
     );
 
     return (
-        <nav className="max-w-6xl mx-auto px-2 sticky top-1 z-50 inset-x-0 py-3 bg-white">
-            {/* for sm devices */}
-            <div className="inline md:hidden">
-                <Sheet>
-                    <div className="flex justify-between mx-3">
-                        <SheetTrigger>
-                            <AlignJustify />
-                        </SheetTrigger>
-                        <div className="flex items-center gap-4">
-                            <ShoppingCart />
-                            <User />
-                        </div>
-                    </div>
-                    <SheetContent>
-                        <SheetHeader>
-                            <div>
-                                <ul className="list-none text-center space-y-5 mt-10 text-2xl font-semibold">
-                                    {navLinks}
-                                </ul>
+        <div className="sticky top-0 z-50 inset-x-0 py-3 bg-white/70 backdrop-blur-lg">
+            <nav className="max-w-6xl mx-auto px-2">
+                {/* for sm devices */}
+                <div className="inline md:hidden">
+                    <Sheet>
+                        <div className="flex justify-between mx-3">
+                            <SheetTrigger>
+                                <AlignJustify />
+                            </SheetTrigger>
+                            <div className="flex items-center gap-4">
+                                <ShoppingCart />
+                                <User />
                             </div>
-                        </SheetHeader>
-                    </SheetContent>
-                </Sheet>
-            </div>
+                        </div>
+                        <SheetContent>
+                            <SheetHeader>
+                                <div>
+                                    <ul className="list-none text-center space-y-5 mt-10 text-2xl font-semibold">
+                                        {navLinks}
+                                    </ul>
+                                </div>
+                            </SheetHeader>
+                        </SheetContent>
+                    </Sheet>
+                </div>
 
-            {/* for md and lg devices */}
-            <div className="hidden md:flex justify-between items-center">
-                <div className="flex gap-28 items-center">
-                    <h1 className="text-2xl font-semibold">ZenFIT</h1>
+                {/* for md and lg devices */}
+                <div className="hidden md:flex justify-between items-center">
+                    <div className="flex gap-28 items-center">
+                        <h1 className="text-2xl font-semibold">ZenFIT</h1>
+                    </div>
+                    <div className="flex gap-10">
+                        <ul className="flex gap-10 items-center ml-6">
+                            {navLinks}
+                        </ul>
+                    </div>
+                    <div className="flex items-center gap-6">
+                        <ShoppingCart />
+                        <User />
+                        {dashboardBtn}
+                    </div>
                 </div>
-                <div className="flex gap-10">
-                    <ul className="flex gap-10 items-center">{navLinks}</ul>
-                </div>
-                <div className="flex items-center gap-6">
-                    <ShoppingCart />
-                    <User />
-                    {dashboardBtn}
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     );
 };
 
