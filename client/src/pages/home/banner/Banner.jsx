@@ -1,27 +1,36 @@
-import shape from "../../../assets/aa.png";
+import { CornerDownRight } from "lucide-react";
 
 const Banner = () => {
     return (
-        <div className="relative overflow-hidden">
-            <img
-                src={shape}
-                alt=""
-                className="w-full min-h-[300px] object-cover"
-            />
-            <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-screen-xl mx-auto text-center px-4">
-                <h1 className="text-3xl md:text-5xl font-medium mb-6">
-                    Elevate Your <span className="">Fitness Journey</span>
-                </h1>
-                <p className="max-w-screen-sm tracking-wider">
-                    Join our community of fitness enthusiasts and take your
-                    workouts to the next level. Whether you prefer Pilates,
-                    Yoga, Kickboxing, or Strength Training, we offer a variety
-                    of classes designed for all levels. Get personalized
-                    guidance from expert trainers and achieve your fitness goals
-                    today!
+        <div className="bg-gray-100">
+            <div className="px-4">
+                <p className="text-center tracking-wide pt-12 text-sm">
+                    Thank you for joining<mark> ZenFIT</mark> ! You&apos;ve
+                    already taken a great step toward{" "}
+                    <br className="hidden md:inline-block" />
+                    your fitness<mark> goals</mark> , but why stop here? Keep
+                    pushing forward, and <mark>unlock</mark> your full
+                    potential!
                 </p>
-                <button className="py-2.5 mt-8 px-12 bg-[#ffe924] font-medium tracking-wider text-gray-800 rounded">
-                    Explore Now
+                <h1 className="text-center text-4xl mt-4 tracking-wide">
+                    Transform your fitness routine with{" "}
+                    <br className="hidden md:inline-block" /> ZenFIT and unlock
+                    your best self
+                </h1>
+            </div>
+            <img
+                src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3JvdXAlMjBmaXRuZXNzfGVufDB8fDB8fHwy"
+                alt=""
+                className="max-w-screen-md w-full mx-auto h-[380px] mt-10 object-cover"
+            />
+            <div className="flex flex-col md:flex-row justify-center items-center gap-5 mt-8">
+                <button className="bg-primaryColor py-3 px-8 text-black font-medium flex justify-center items-center gap-2 rounded-md">
+                    <CornerDownRight />
+                    Start your transformation today !
+                </button>
+                <button className="flex justify-center items-center gap-2 font-medium">
+                    <CornerDownRight className="bg-white w-8 h-8 p-1 rounded-md" />
+                    Read More
                 </button>
             </div>
         </div>
