@@ -2,7 +2,7 @@ import { CornerDownRight } from "lucide-react";
 
 const Banner = () => {
     return (
-        <div className="bg-gray-100">
+        <div>
             <div className="px-4">
                 <p className="text-center tracking-wide pt-12 text-sm">
                     Thank you for joining<mark> ZenFIT</mark> ! You&apos;ve
