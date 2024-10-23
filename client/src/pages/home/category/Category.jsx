@@ -60,9 +60,13 @@ const Category = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
                 {categories.map((category, index) => (
-                    <Link 
-                    to={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    key={index} className="bg-white pb-5">
+                    <Link
+                        to={`/category/${category.name
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`}
+                        key={index}
+                        className="bg-white pb-5"
+                    >
                         <img
                             src={category.image}
                             alt={category.name}
