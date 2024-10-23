@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import commentSchema from "./comment.model";
+import commentSchema from "./comment.model.js";
 
 const classSchema = new mongoose.Schema(
     {
@@ -39,7 +39,6 @@ const classSchema = new mongoose.Schema(
                     "Pilates",
                     "Yoga",
                     "Indoor Training",
-                    "Dance",
                     "Kickboxing",
                     "Circuit Training",
                     "Strength Training",
@@ -99,6 +98,11 @@ const classSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
+
+// classSchema.pre("save", function (next) {
+//     this.category = this.category.toLowerCase().replace(/\s+/g, "-");
+//     next();
+// });
 
 const Class = mongoose.models.Class || mongoose.model("Class", classSchema);
 export default Class;

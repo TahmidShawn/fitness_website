@@ -8,6 +8,7 @@ import errorMiddleware from "./middlewares/error.middleware.js";
 import userRouter from "./routes/user.route.js";
 import trainerRouter from "./routes/trainer.route.js";
 import adminRouter from "./routes/admin.route.js";
+import categoryRouter from "./routes/category.route.js";
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use("/api/v1", userRouter);
 app.use("/api/v1", trainerRouter);
 app.use("/api/v1", adminRouter);
+app.use("/api/v1", categoryRouter);
 
 // catch undefined route
 app.use((req, res, next) => {
