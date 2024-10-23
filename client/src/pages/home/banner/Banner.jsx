@@ -5,11 +5,11 @@ const Banner = () => {
         <div>
             <div className="px-4">
                 <p className="text-center tracking-wide pt-12 text-sm">
-                    Thank you for joining<mark> ZenFIT</mark> ! You&apos;ve
+                    Thank you for joining<mark> ZenFIT </mark> ! You&apos;ve
                     already taken a great step toward{" "}
                     <br className="hidden md:inline-block" />
-                    your fitness<mark> goals</mark> , but why stop here? Keep
-                    pushing forward, and <mark>unlock</mark> your full
+                    your fitness<mark> goals </mark> , but why stop here? Keep
+                    pushing forward, and <mark> unlock </mark> your full
                     potential!
                 </p>
                 <h1 className="text-center text-4xl mt-4 tracking-wide">
