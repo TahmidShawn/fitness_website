@@ -1,4 +1,6 @@
 import Root from "@/layout/root/Root";
+import Login from "@/pages/authentication/login/Login";
+import Register from "@/pages/authentication/register/Register";
 import Error from "@/pages/error/Error";
 import Home from "@/pages/home/home/Home";
 import SingleCategory from "@/pages/singleCategory/SingleCategory";
@@ -24,6 +26,14 @@ const Routes = createBrowserRouter([
                 element: <SingleCategory />,
             },
         ],
+    },
+    {
+        path: "/auth/register",
+        element: <Register />,
+    },
+    {
+        path: "/auth/login",
+        element: <Login />,
     },
 ]);
 
