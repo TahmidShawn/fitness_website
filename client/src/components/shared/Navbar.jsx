@@ -6,7 +6,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { AlignJustify, ShoppingCart, User } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -135,9 +135,12 @@ const Navbar = () => {
                                 <button className="block w-full text-left px-4 py-1  text-gray-700 hover:bg-gray-100">
                                     Dashboard
                                 </button>
-                                <button className="block w-full text-left px-4 py-1  text-gray-700 hover:bg-gray-100">
+                                <Link
+                                    to={"/auth/register"}
+                                    className="block w-full text-left px-4 py-1  text-gray-700 hover:bg-gray-100"
+                                >
                                     Logout
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
