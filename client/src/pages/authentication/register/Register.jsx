@@ -9,7 +9,7 @@ const Register = () => {
         <div className="w-full lg:grid min-h-screen lg:grid-cols-2">
             <div className="hidden bg-muted lg:block">
                 <img
-                    src="https://images.unsplash.com/photo-1517398747128-cd2271140a0b?q=80&w=1378&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDIxfHxmaXRuZXNzJTIwZ3JvdXB8ZW58MHx8MHx8fDA%3D"
                     alt="Image"
                     className="h-screen w-full object-cover"
                 />

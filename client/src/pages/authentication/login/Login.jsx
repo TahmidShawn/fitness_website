@@ -48,6 +48,7 @@ const Login = () => {
                                 className="bg-white"
                                 id="password"
                                 type="password"
+                                placeholder="password"
                                 required
                             />
                         </div>
@@ -60,7 +61,10 @@ const Login = () => {
                     </div>
                     <div className="mt-4 text-center">
                         Don&apos;t have an account?{" "}
-                        <Link to="/auth/register" className="underline">
+                        <Link
+                            to="/auth/register"
+                            className="underline font-medium"
+                        >
                             Register
                         </Link>
                     </div>
@@ -68,7 +72,7 @@ const Login = () => {
             </div>
             <div className="hidden bg-muted lg:block">
                 <img
-                    src="https://images.unsplash.com/photo-1560215978-9054e9c7b983?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="https://images.unsplash.com/photo-1593476123561-9516f2097158?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTM5fHxmaXRuZXNzJTIwZ3JvdXB8ZW58MHx8MHx8fDA%3D"
                     alt="Image"
                     className="h-screen w-full object-cover"
                 />
