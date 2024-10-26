@@ -96,13 +96,18 @@ const classSchema = new mongoose.Schema(
         },
         comments: [commentSchema],
     },
-    { timestamps: true }
+    {
+        timestamps: true,
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+    }
 );
 
-// classSchema.pre("save", function (next) {
-//     this.category = this.category.toLowerCase().replace(/\s+/g, "-");
-//     next();
-// });
+classSchema.virtual("newPrice").get(function () {
+    return Math.floor(
+        this.price - (this.price * this.discountPercentage) / 100
+    );
+});
 
 const Class = mongoose.models.Class || mongoose.model("Class", classSchema);
 export default Class;
