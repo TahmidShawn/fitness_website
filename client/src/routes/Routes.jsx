@@ -1,8 +1,10 @@
 import Root from "@/layout/root/Root";
 import Login from "@/pages/authentication/login/Login";
 import Register from "@/pages/authentication/register/Register";
+import Dashboard from "@/pages/dashboard/dashboard/Dashboard";
 import Error from "@/pages/error/Error";
 import Home from "@/pages/home/home/Home";
+import ProgramDetails from "@/pages/programDetails/ProgramDetails";
 import Programs from "@/pages/programs/Programs";
 
 import { createBrowserRouter, Navigate } from "react-router-dom";
@@ -25,6 +27,10 @@ const Routes = createBrowserRouter([
                 path: "/programs",
                 element: <Programs />,
             },
+            {
+                path: "/programs/:id",
+                element: <ProgramDetails />,
+            },
         ],
     },
     {
@@ -34,6 +40,10 @@ const Routes = createBrowserRouter([
     {
         path: "/auth/login",
         element: <Login />,
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard />,
     },
 ]);
 

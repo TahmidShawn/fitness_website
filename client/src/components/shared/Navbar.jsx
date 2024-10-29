@@ -56,7 +56,7 @@ const Navbar = () => {
             <div className="relative group" ref={dropdownRef}>
                 <User className="cursor-pointer" onClick={toggleDropdown} />
                 <div
-                    className={`absolute right-0 mt-4 w-48 py-2 bg-white border border-gray-200 rounded-lg shadow-lg transition-all duration-300 z-50 ${
+                    className={`absolute right-0 mt-4 w-44 p-1 bg-white border border-gray-200 rounded-lg shadow-lg transition-all duration-300 z-50 ${
                         isDropdownOpen
                             ? "opacity-100 visible"
                             : "opacity-0 invisible"
@@ -65,9 +65,12 @@ const Navbar = () => {
                     <button className="block w-full text-left px-4 py-2  text-gray-700 hover:bg-gray-100">
                         Login
                     </button>
-                    <button className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                    <Link
+                        to={"/dashboard"}
+                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    >
                         Dashboard
-                    </button>
+                    </Link>
                     <Link
                         to={"/auth/register"}
                         className="block w-full text-left px-4 py-1  text-gray-700 hover:bg-gray-100"
