@@ -3,22 +3,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-
 import { useForm } from "react-hook-form";
-import useDataPost from "@/hooks/useDataPost";
+import useAuth from "@/hooks/useAuth";
 
 const Register = () => {
+    const { registerUser, loading } = useAuth();
+
     const {
         register,
         handleSubmit,
-        watch,
+        reset,
         formState: { errors },
     } = useForm();
 
-    const { mutate, isLoading } = useDataPost("/api/v1/auth/register");
-
-    const onSubmit = (data) => {
-        mutate(data);
+    const onSubmit = async (data) => {
+        await registerUser(data, reset);
     };
 
     return (

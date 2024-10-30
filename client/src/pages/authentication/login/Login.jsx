@@ -1,11 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+
+import useAuth from "@/hooks/useAuth";
 import { ArrowLeft } from "lucide-react";
+
+import { useForm } from "react-hook-form";
 
 import { Link } from "react-router-dom";
 
 const Login = () => {
+    const { loginUser, loading } = useAuth();
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+    const onSubmit = async (data) => {
+        await loginUser(data, reset);
+    };
     return (
         <div className="w-full lg:grid min-h-screen lg:grid-cols-2">
             <div className="flex items-center justify-center py-12">
@@ -23,10 +37,14 @@ const Login = () => {
                             Enter your email below to login to your account
                         </p>
                     </div>
-                    <div className="grid gap-4">
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="grid gap-4"
+                    >
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email</Label>
                             <Input
+                                {...register("email")}
                                 id="email"
                                 type="email"
                                 placeholder="m@example.com"
@@ -45,6 +63,7 @@ const Login = () => {
                                 </Link>
                             </div>
                             <Input
+                                {...register("password")}
                                 className="bg-white"
                                 id="password"
                                 type="password"
@@ -58,7 +77,7 @@ const Login = () => {
                         <Button variant="outline" className="w-full">
                             Login with Google
                         </Button>
-                    </div>
+                    </form>
                     <div className="mt-4 text-center">
                         Don&apos;t have an account?{" "}
                         <Link
