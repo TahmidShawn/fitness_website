@@ -63,7 +63,7 @@ const Navbar = () => {
                     } group-hover:opacity-100 group-hover:visible`}
                 >
                     <button className="block w-full text-left px-4 py-2  text-gray-700 hover:bg-gray-100">
-                        Login
+                        Profile
                     </button>
                     <Link
                         to={"/dashboard"}
@@ -72,10 +72,10 @@ const Navbar = () => {
                         Dashboard
                     </Link>
                     <Link
-                        to={"/auth/register"}
+                        to={"/auth/login"}
                         className="block w-full text-left px-4 py-1  text-gray-700 hover:bg-gray-100"
                     >
-                        Logout
+                        Login
                     </Link>
                 </div>
             </div>

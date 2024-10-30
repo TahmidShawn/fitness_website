@@ -4,7 +4,23 @@ import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import { useForm } from "react-hook-form";
+import useDataPost from "@/hooks/useDataPost";
+
 const Register = () => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+
+    const { mutate, isLoading } = useDataPost("/api/v1/auth/register");
+
+    const onSubmit = (data) => {
+        mutate(data);
+    };
+
     return (
         <div className="w-full lg:grid min-h-screen lg:grid-cols-2">
             <div className="hidden bg-muted lg:block">
@@ -28,13 +44,17 @@ const Register = () => {
                             Enter your email below to register to your account
                         </p>
                     </div>
-                    <div className="grid gap-4">
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="grid gap-4"
+                    >
                         <div className="grid gap-2">
                             <Label htmlFor="text">Name</Label>
                             <Input
+                                {...register("username")}
                                 id="text"
                                 type="text"
-                                placeholder="name"
+                                placeholder="user name"
                                 required
                                 className="bg-white"
                             />
@@ -42,6 +62,7 @@ const Register = () => {
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email</Label>
                             <Input
+                                {...register("email")}
                                 id="email"
                                 type="email"
                                 placeholder="m@example.com"
@@ -52,6 +73,7 @@ const Register = () => {
                         <div className="grid gap-2">
                             <Label htmlFor="password">Password</Label>
                             <Input
+                                {...register("password")}
                                 id="password"
                                 placeholder="password"
                                 type="password"
@@ -62,10 +84,10 @@ const Register = () => {
                         <Button type="submit" className="w-full">
                             Login
                         </Button>
-                        <Button variant="outline" className="w-full">
+                        {/* <Button variant="outline" className="w-full">
                             Login with Google
-                        </Button>
-                    </div>
+                        </Button> */}
+                    </form>
                     <div className="mt-4 text-center">
                         Already&apos;t have an account?{" "}
                         <Link
