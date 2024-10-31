@@ -1,9 +1,10 @@
+import LoadingButton from "@/components/elements/LoadingButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import useAuth from "@/hooks/useAuth";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 
 import { useForm } from "react-hook-form";
 
@@ -71,9 +72,13 @@ const Login = () => {
                                 required
                             />
                         </div>
-                        <Button type="submit" className="w-full">
-                            Login
-                        </Button>
+                        {loading ? (
+                            <LoadingButton text="Logging in..." />
+                        ) : (
+                            <Button type="submit" className="w-full">
+                                Login
+                            </Button>
+                        )}
                         <Button variant="outline" className="w-full">
                             Login with Google
                         </Button>

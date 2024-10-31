@@ -2,10 +2,12 @@ import { useContext, useState } from "react";
 import useAxiosPublic from "./useAxiosPublic";
 import { toast } from "sonner";
 import { AuthContext } from "@/context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const useAuth = () => {
     const axiosPublic = useAxiosPublic();
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const {
         setAuthState,
@@ -47,6 +49,7 @@ const useAuth = () => {
             });
             toast.success(response?.data?.message || "Operation successful");
             reset();
+            navigate("/");
         } catch (error) {
             toast.error(error.response?.data?.message || "Operation error");
         } finally {
@@ -58,7 +61,7 @@ const useAuth = () => {
     const logoutUser = async () => {
         setLoading(true);
         try {
-            const response = await axiosPublic.get("/api/v1/logout");
+            const response = await axiosPublic.get("/api/v1/auth/logout");
             setAuthState({
                 isAuthenticated: false,
                 user: null,

@@ -1,3 +1,4 @@
+import CurrencyIcon from "@/components/elements/CurrencyIcon";
 import { CornerDownRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -24,10 +25,10 @@ const ProgramClass = ({ program }) => {
                 {/* Prices */}
                 <div className="mt-3 flex items-baseline space-x-2">
                     <span className="text-2xl font-bold text-gray-800">
-                        ৳ {newPrice}
+                        <CurrencyIcon /> {newPrice}
                     </span>
                     <span className="text-sm text-gray-400 line-through">
-                        ৳ {price}
+                        <CurrencyIcon /> {price}
                     </span>
                 </div>
 

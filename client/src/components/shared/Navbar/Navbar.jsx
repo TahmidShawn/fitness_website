@@ -7,8 +7,14 @@ import {
 } from "@/components/ui/sheet";
 import { AlignJustify, ShoppingCart, User } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "@/hooks/useAuth";
 
 const Navbar = () => {
+    const { isAuthenticated, logoutUser } = useAuth();
+    const handleLogout = async () => {
+        await logoutUser();
+    };
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -71,12 +77,21 @@ const Navbar = () => {
                     >
                         Dashboard
                     </Link>
-                    <Link
-                        to={"/auth/login"}
-                        className="block w-full text-left px-4 py-1  text-gray-700 hover:bg-gray-100"
-                    >
-                        Login
-                    </Link>
+                    {isAuthenticated ? (
+                        <button
+                            onClick={handleLogout}
+                            className="block w-full text-left px-4 py-1  text-gray-700 hover:bg-gray-100"
+                        >
+                            Logout
+                        </button>
+                    ) : (
+                        <Link
+                            to={"/auth/login"}
+                            className="block w-full text-left px-4 py-1  text-gray-700 hover:bg-gray-100"
+                        >
+                            Login
+                        </Link>
+                    )}
                 </div>
             </div>
         </>
